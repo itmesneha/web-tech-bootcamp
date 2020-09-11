@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>vdom intro </title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script>
+    var counter = 0;
+    function onBtnRenderClick() {
+      var appEle = React.createElement('div', null, 
+        React.createElement('h1', null, 'React.js'),
+        React.createElement('hr'),
+        React.createElement('section', null, 
+          React.createElement('h3', null, 'introduction'),
+          React.createElement('p', null, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam leo tortor, pretium ut efficitur non, eleifend at metus. In accumsan vel velit sit amet porta. Donec augue quam, laoreet et bibendum vitae, placerat in ipsum. Nam vel libero turpis. Suspendisse euismod sodales fermentum. Aenean pharetra iaculis dictum. Integer in tellus dignissim, placerat nisi sit amet, aliquam nulla. Aliquam sollicitudin et neque nec auctor. Morbi pharetra arcu arcu, nec dignissim ante congue vitae. Aenean vestibulum magna id est consectetur, dictum placerat orci placerat. Phasellus eget ultrices arcu.'),
+          React.createElement('p', null, 'Sed pulvinar posuere sodales. Nullam non pulvinar risus, et maximus quam. Phasellus tincidunt imperdiet velit sit amet blandit. Donec efficitur magna faucibus purus dapibus posuere. Vestibulum tempor libero sit amet tempus molestie. Nullam at sodales libero. Vestibulum vel arcu a elit rutrum vulputate id sit amet mi.'),
+          React.createElement('p', null, 'Donec ac dapibus libero, sed iaculis purus. Integer eu ligula tempor, porttitor dui a, ultricies lectus. Sed maximus ornare neque, ut tincidunt ex gravida eget. Sed nec est elit. Vestibulum eget lorem eget eros congue bibendum mattis at lectus. Phasellus ut leo tempus, maximus neque eget, molestie orci. Donec semper scelerisque magna iaculis tincidunt. Quisque dignissim, massa a blandit dictum, lorem ligula maximus leo, vel rutrum elit tellus vel ligula. Nulla vestibulum odio ut metus interdum, vitae volutpat metus mattis. Aliquam ac dolor quis velit accumsan congue. Proin a dolor nec ipsum porttitor rhoncus. Donec eget posuere eros, eu consequat turpis. Sed lobortis dui diam, in vulputate ante vulputate non. Quisque tincidunt metus diam, eget vulputate nisi vestibulum sit amet. Nullam in lobortis nunc. Nam rutrum ut velit in dignissim.'),
+        ),
+        React.createElement('section', null,
+          React.createElement('h3', null, 'references'),
+          React.createElement('p', null, 'In risus augue, tincidunt sed suscipit nec, fringilla sit amet elit. Vivamus nulla sapien, eleifend quis orci quis, aliquam varius purus. Curabitur eu purus dapibus enim tempus sagittis. Phasellus fermentum elit sed euismod fermentum. Mauris pretium turpis at arcu rhoncus mollis. Nullam vitae egestas mi. Nulla posuere sagittis tincidunt. Mauris in vulputate eros. Mauris at lectus gravida, fermentum ligula ac, aliquet ipsum.'),
+          React.createElement('p', null, 'Sed dolor neque, volutpat eget justo vitae, molestie ultricies nunc. Phasellus euismod ligula dolor, sed accumsan lectus suscipit at. Nunc malesuada auctor tortor, a dapibus nisi consectetur sed. Sed in tortor arcu. Maecenas dignissim mattis diam a tempus. Duis scelerisque, mauris vel maximus varius, nulla metus sollicitudin tellus, nec rhoncus dui est id ipsum. Donec vitae odio vitae nisl porta congue. Ut porttitor vitae velit id rhoncus. Aenean ac scelerisque lacus. Nulla sed feugiat nisi.'),
+          React.createElement('p', null, 'In eu eros purus. Ut nec lobortis metus. Nulla quis lacus vel magna scelerisque dictum eget quis neque. Vestibulum sed feugiat turpis. Aliquam sed purus in justo faucibus fringilla. Donec fringilla sodales placerat. Suspendisse egestas auctor dui, vel scelerisque purus laoreet eget. Aenean ac turpis in mauris convallis pulvinar. Nullam hendrerit auctor elit, sit amet elementum lectus luctus vel. Aliquam venenatis arcu a sem tempus feugiat.'),
+        ),
+        React.createElement('section', null,
+          React.createElement('h3', null, 'Advantages'),
+          React.createElement('ol', null, 
+            React.createElement('li', null, 'Efficient'),
+            React.createElement('li', null, 'Fast'),
+            React.createElement('li', null, 'Nice'),
+          )
+        )
+        );
+      ReactDOM.render(appEle, document.getElementById('root'));
+    };
+    function onDocumentLoad() {
+      var btnRender = document.getElementById('btnRender');
+      btnRender.addEventListener('click', onBtnRenderClick);
+    };
+    window.addEventListener('load', onDocumentLoad);
+  </script>
+</head>
+<body>
+  hello there
+  <input type = "button" value = "render" id = "btnRender" />
+  <div id = "root"></div>
+  <div>
+    <span>Counter:</span>
+    <span id = "count"></span>
+  </div>
+</body>
+
+</html>
