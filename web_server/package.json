@@ -1,0 +1,21 @@
+{
+  "name": "web-server",
+  "version": "0.1.0",
+  "description": "a demo server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "demo",
+    "web",
+    "node"
+  ],
+  "author": "sneha s",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "nodemon": "^2.0.4"
+  }
+}
