@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>vdom intro </title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script>
+    var counter = 0;
+    function onBtnRenderClick() {
+      ++counter;
+      document.getElementById('count').innerText = counter;
+      var h1Ele = React.createElement('h1', {id : 'top-heading'}, 'welcome to reactjs!' + counter);
+      ReactDOM.render(h1Ele, document.getElementById('root'));
+    };
+    function onDocumentLoad() {
+      var btnRender = document.getElementById('btnRender');
+      btnRender.addEventListener('click', onBtnRenderClick);
+    };
+    window.addEventListener('load', onDocumentLoad);
+  </script>
+</head>
+<body>
+  hello there
+  <input type = "button" value = "render" id = "btnRender" />
+  <div id = "root"></div>
+  <div>
+    <span>Counter:</span>
+    <span id = "count"></span>
+  </div>
+</body>
+
+</html>
