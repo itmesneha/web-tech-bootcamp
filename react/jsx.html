@@ -1,0 +1,46 @@
+<html>
+<head>
+  <title>vdom with babel </title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type = 'text/babel'>
+    var counter = 0;
+    function onBtnRenderClick() {
+      ++counter;
+      var appEle = (
+        <div>
+            <h1>react js!!</h1>
+            <hr />
+            <div>
+                <span>Counter:</span>
+                <span>{counter}</span>
+            </div>
+            <section>
+                heloooooo section 1
+            </section>
+            <section>
+                section 2!!!!
+            </section>  
+        </div>
+      );
+      ReactDOM.render(appEle, document.getElementById('root'));
+    };
+    function onDocumentLoad() {
+      var btnRender = document.getElementById('btnRender');
+      btnRender.addEventListener('click', onBtnRenderClick);
+    };
+    window.addEventListener('load', onDocumentLoad);
+  </script>
+</head>
+<body>
+  hello there
+  <input type = "button" value = "render" id = "btnRender" />
+  <div id = "root"></div>
+  <div>
+    <!-- <span>Counter:</span>
+    <span id = "count"></span> -->
+  </div>
+</body>
+
+</html>
