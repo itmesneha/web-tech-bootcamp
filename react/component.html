@@ -33,7 +33,10 @@
                     // console.log('greet button clicked!');
                     // this.setState({message: 'greet button clicked!'});
                     var userName = this.state.userName; 
-                    this.setState({message: 'hello ' + userName});
+                    var {template} = this.props;
+                    var greetMsg = `Hi ${userName} , ${template}`;
+                    // this.setState({message: 'hello ' + userName});
+                    this.setState({message : greetMsg});
                 };
 
                 render() {
@@ -50,7 +53,7 @@
                     )
                 }
             };
-            ReactDOM.render(React.createElement(Greeter), document.getElementById('root'));
+            ReactDOM.render(React.createElement(Greeter, {template : 'Have a great day!!'} ), document.getElementById('root'));
         </script>
     </head>
     <body>
