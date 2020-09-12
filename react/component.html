@@ -53,7 +53,13 @@
                     )
                 }
             };
-            ReactDOM.render(React.createElement(Greeter, {template : 'Have a great day!!'} ), document.getElementById('root'));
+            ReactDOM.render(
+                <div>
+                    <Greeter template = 'have a great day~'/>
+                    <Greeter template = 'have a nice day~~' />
+                </div>
+                // React.createElement(Greeter, {template : 'Have a great day!!'} ), 
+                ,document.getElementById('root'));
         </script>
     </head>
     <body>
