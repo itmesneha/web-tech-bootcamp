@@ -56,22 +56,37 @@
                             <input type = "button" value = "calculate" id = "calculate" onClick = {this.onBtnCalculateClick} />
                             <br /><br />
                             <section>
-                                <span>Basic: {basic}</span>
-                                <br /><br />
-                                <span>HRA: {hra}</span>
-                                <br /><br />
-                                <span>DA: {da} </span>
-                                <br /><br />
-                                <span>TAX: {tax} </span>
-                                <br /><br />
-                                <span>SALARY: {salary} </span>
-                                <br /><br />
+                                <SalaryDisplay data = {this.state} />
                             </section>
                         </section>
-                    )
+                    );
                 }
             };
 
+            class SalaryDisplay extends React.Component {
+                render() {
+                    const {data} = this.props;
+                    const {basic, hra, da, tax, salary} = data; 
+                    return (
+                        <section>
+                            <span>Basic: {basic}</span>
+                            <br /><br />
+                            <span>HRA: {hra}</span>
+                            <br /><br />
+                            <span>DA: {da} </span>
+                            <br /><br />
+                            <span>TAX: {tax} </span>
+                            <br /><br />
+                            <span>SALARY: {salary} </span>
+                            <br /><br />
+                           
+                        </section>
+                    );
+                };
+               
+            };
+
+            
             // ReactDOM.render(React.createElement(SalaryCalculator), document.getElementById('root'));
             ReactDOM.render(<SalaryCalculator/ >, document.getElementById('root'));
         </script>

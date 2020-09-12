@@ -69,7 +69,7 @@
                             <label>Template: </label>
                             <input type = 'text' onChange = {this.onTemplateChange} />
                             <Greeter template = {this.state.template} />
-                            <Greeter template = 'have a nice day~~' />
+                            
                         </div>
                     );
                 };
@@ -81,7 +81,11 @@
                 //     <Greeter template = 'have a nice day~~' />
                 // </div>
                 // React.createElement(Greeter, {template : 'Have a great day!!'} ), 
-                <GreeterContainer />
+                <div>
+                    <GreeterContainer />
+                    <hr />
+                    <GreeterContainer />
+                </div> 
                 ,document.getElementById('root'));
         </script>
     </head>
