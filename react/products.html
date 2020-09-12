@@ -8,9 +8,21 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type = 'text/babel'>
             class Products extends React.Component {
+                state = {
+                    productNames : [],
+                    newProductName : ''
+                };
+                
+                txtProductChange = (evt) => {
+                    this.setState({ productName : evt.target.value });
+                };
+
+               
                 render () {
-                    const productNames = ['Pen', 'Pencil', 'Marker'];
+                    const { productNames, newProductName } = this.state;
                     // const productItems = [];
+                    // const productNames = ['Pen', 'Pencil', 'Marker'];
+                   
                     // for(let index = 0; index < productNames.length; index++){
                     //     const productName = productNames[index];
                     //     const productItem = (<li key = {index}>{productName}</li>);
@@ -18,13 +30,16 @@
                     // }
 
                     const productItems = productNames.map((productName, index) => (<li key = {index}>{productName}</li>) );
-
+                    
                     return (
                         <div>
                             <h1>Products</h1>
                             <hr />
+                            <label>Product:</label>
+                            <input type = "text" id = "txtProduct" onChange = { evt => this.setState({ newProductName : evt.target.value})}/>
+                            <input type = "button" value = "add" id = "addProduct" onClick = { () => this.setState({productNames : [...productNames, newProductName]})} />
                             <ol>
-                                {productItems}
+                               {productItems}
                             </ol>
                         </div>
                     );
