@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            component intro
+        </title>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            .highlight{
+                color: blue;
+                font-size: 18pt;
+            }
+        </style>
+        </style>
+        <script type = 'text/babel'>
+            class Greeter extends React.Component {
+
+                state  = { //attribute of the class, if u want things to rerender put them here
+                    userName: '',
+                    message: 'dummy greet message'
+                };
+                // let message = 'dummy greet message!';
+
+                onTxtUserNameChange = (evt) => {
+                    this.setState({userName : evt.target.value});
+                    
+                    // this.setState({message: 'hello ' + evt.target.value});
+                };
+
+                onBtnGreetClick = () => {
+                    // console.log('greet button clicked!');
+                    // this.setState({message: 'greet button clicked!'});
+                    var userName = this.state.userName; 
+                    var {template} = this.props;
+                    var greetMsg = `Hi ${userName} , ${template}`;
+                    // this.setState({message: 'hello ' + userName});
+                    this.setState({message : greetMsg});
+                };
+
+                render() {
+                   
+                    return (
+                        <div>
+                            <h1>Greeter</h1>
+                            <hr/>
+                            <label htmlFor = "txtUserName">UserName:</label>
+                            <input type = "text" name = "" id = "txtUserName" onChange = {this.onTxtUserNameChange} />
+                            <input type = "button" value = "greet!" onClick = {this.onBtnGreetClick} />
+                            <div className = "highlight">{this.state.message}</div>
+                        </div>
+                    )
+                }
+            };
+
+            class GreeterContainer extends React.Component {
+                state = {
+                    template :'',
+                };
+
+                onTemplateChange = (evt) => {
+                    this.setState({ template: evt.target.value});
+                };
+
+                render () {
+                    return (
+                        <div>
+                            <label>Template: </label>
+                            <input type = 'text' onChange = {this.onTemplateChange} />
+                            <Greeter template = {this.state.template} />
+                            <Greeter template = 'have a nice day~~' />
+                        </div>
+                    );
+                };
+            };
+
+            ReactDOM.render(
+                // <div>
+                //     <Greeter template = 'have a great day~'/>
+                //     <Greeter template = 'have a nice day~~' />
+                // </div>
+                // React.createElement(Greeter, {template : 'Have a great day!!'} ), 
+                <GreeterContainer />
+                ,document.getElementById('root'));
+        </script>
+    </head>
+    <body>
+        <div id = "root"></div>
+        
+    </body>
+</html>
