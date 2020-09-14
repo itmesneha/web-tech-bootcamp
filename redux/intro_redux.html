@@ -21,14 +21,14 @@
                 }
 
                 onUpClick = () => {
-                    const {delta} = this.state;
-                    const up_action = { type : 'UP', payload : delta};
+                    const {delta} = this.state; //when you're getting values from the state..get it with the curly braces
+                    const up_action = this.props.actionCreators.up(delta);
                     this.props.dispatch(up_action);
                 };
 
                 onDownClick = () => {
                     const {delta} = this.state;
-                    const down_action = { type : 'DOWN', payload: delta };
+                    const down_action = this.props.actionCreators.down(delta);
                     this.props.dispatch(down_action);
                 };
                
@@ -44,14 +44,25 @@
                             <span> [ {value} ] </span>
                             <input type = 'button' value = 'up' onClick = {this.onUpClick}/>
                         </div>
-
                     );
                 };
             };
 
+            const spinnerActionCreators = {
+                up(delta) {
+                    const up_action = { type : 'UP', payload : delta};
+                    return up_action;
+                },
+
+                down(delta) {
+                    const down_action = { type : 'DOWN', payload: delta };
+                    return down_action;
+                }
+            };
+
             function renderApp() {
                 const value = store.getState();
-                ReactDOM.render( <Spinner value = {value} dispatch = {store.dispatch} />, document.getElementById('root'));
+                ReactDOM.render( <Spinner value = {value} dispatch = {store.dispatch} actionCreators = {spinnerActionCreators} />, document.getElementById('root'));
             };
 
            renderApp();
