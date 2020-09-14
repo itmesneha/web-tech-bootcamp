@@ -7,8 +7,8 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type = 'text/babel'>
             function spinnerReducer(currentState = 50, action) {
-                if (action.type === 'UP') return currentState + 1;
-                if (action.type === 'DOWN') return currentState - 1;
+                if (action.type === 'UP') return currentState + action.payload;
+                if (action.type === 'DOWN') return currentState - action.payload;
                 return currentState;
             };
 
@@ -16,14 +16,19 @@
             store.getState();
 
             class Spinner extends React.Component {
+                state = {
+                    delta : 0
+                }
 
                 onUpClick = () => {
-                    const up_action = { type : 'UP'};
-                    this.props.store.dispatch(up_action)
+                    const {delta} = this.state;
+                    const up_action = { type : 'UP', payload : delta};
+                    this.props.store.dispatch(up_action);
                 };
 
                 onDownClick = () => {
-                    const down_action = { type : 'DOWN' };
+                    const {delta} = this.state;
+                    const down_action = { type : 'DOWN', payload: delta };
                     this.props.store.dispatch(down_action);
                 };
                
@@ -33,6 +38,8 @@
                         <div>
                             <h3>Spinner</h3>
                             <hr />
+                            <label>Delta: </label><br/>
+                            <input type = 'number' onChange = { (evt) => this.setState({ delta : parseInt(evt.target.value) || 0 }) } /><br />
                             <input type = "button" value = "down" onClick = {this.onDownClick}/>
                             <span> [ {value} ] </span>
                             <input type = 'button' value = 'up' onClick = {this.onUpClick}/>
@@ -55,9 +62,9 @@
     </head>
     <body>
         <div id = 'root'>
-            <input type = 'button' value = 'down' />
+            <!-- <input type = 'button' value = 'down' />
             <span> [ 0 ]</span>
-            <input type = 'button' value = 'up' />
+            <input type = 'button' value = 'up' /> -->
         </div>
     </body>
 </html>
