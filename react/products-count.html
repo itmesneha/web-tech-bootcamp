@@ -9,11 +9,11 @@
         <script type = 'text/babel'>
             class ProductsCount extends React.Component {
                 render () {
-                    const {itemsCount} = this.props;
+                    const {list} = this.props;
                     return (
                         <div>
                             <span>Products Count:</span>
-                            <span>{itemsCount}</span>
+                            <span>{list.length}</span>
                         </div>
                     );
                 };
@@ -30,6 +30,13 @@
                     this.setState({ productName : evt.target.value });
                 };
 
+                onBtnAddNewClick = () => {
+                    const {productNames, newProductName} = this.state;
+                    const newProductNames = [...productNames, newProductName];
+                    this.setState({productNames : newProductNames});
+                    this.props.onListChange(newProductNames);
+
+                }
                
                 render () {
                     // console.log('render function invoked!');
@@ -47,18 +54,11 @@
                     
                     return (
                         <div>
-                            <ProductsCount 
-                                itemsCount = {productNames.length}
-                            />
                             <h1>Products</h1>
                             <hr />
-                            <div>
-                                <span>Products Count: </span>
-                                <span>{productNames.length}</span>
-                            </div>
                             <label>Product:</label>
                             <input type = "text" id = "txtProduct" onChange = { evt => this.setState({ newProductName : evt.target.value})}/>
-                            <input type = "button" value = "add" id = "addProduct" onClick = { () => this.setState({productNames : [...productNames, newProductName]})} />
+                            <input type = "button" value = "add" id = "addProduct" onClick = {this.onBtnAddNewClick} />
                             <ol>
                                {productItems}
                             </ol>
@@ -67,7 +67,21 @@
                 };
             };
 
-            ReactDOM.render(<Products />, document.getElementById('root'));
+            class App extends React.Component {
+                state = {
+                    data : []
+                };
+                render () {
+                    return (
+                        <div>
+                            <ProductsCount list = {this.state.data} />
+                            <Products onListChange = { list => this.setState({ data : list } )} />
+                        </div>
+                    );
+                };
+            }
+
+            ReactDOM.render(<App />, document.getElementById('root'));
 
         </script>
     </head>
