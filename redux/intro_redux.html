@@ -23,17 +23,17 @@
                 onUpClick = () => {
                     const {delta} = this.state;
                     const up_action = { type : 'UP', payload : delta};
-                    this.props.store.dispatch(up_action);
+                    this.props.dispatch(up_action);
                 };
 
                 onDownClick = () => {
                     const {delta} = this.state;
                     const down_action = { type : 'DOWN', payload: delta };
-                    this.props.store.dispatch(down_action);
+                    this.props.dispatch(down_action);
                 };
                
                 render() {
-                    const { store } = this.props, value = store.getState();
+                    const { value } = this.props;
                     return (
                         <div>
                             <h3>Spinner</h3>
@@ -50,7 +50,8 @@
             };
 
             function renderApp() {
-                ReactDOM.render( <Spinner store = {store}/>, document.getElementById('root'));
+                const value = store.getState();
+                ReactDOM.render( <Spinner value = {value} dispatch = {store.dispatch} />, document.getElementById('root'));
             };
 
            renderApp();
