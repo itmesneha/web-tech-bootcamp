@@ -22,13 +22,13 @@
 
                 onUpClick = () => {
                     const {delta} = this.state; //when you're getting values from the state..get it with the curly braces
-                    const up_action = this.props.actionCreators.up(delta);
+                    const up_action = this.props.up(delta);
                     this.props.dispatch(up_action);
                 };
 
                 onDownClick = () => {
                     const {delta} = this.state;
-                    const down_action = this.props.actionCreators.down(delta);
+                    const down_action = this.props.down(delta);
                     this.props.dispatch(down_action);
                 };
                
@@ -62,7 +62,18 @@
 
             function renderApp() {
                 const value = store.getState();
-                ReactDOM.render( <Spinner value = {value} dispatch = {store.dispatch} actionCreators = {spinnerActionCreators} />, document.getElementById('root'));
+                // ReactDOM.render( <Spinner value = {value} dispatch = {store.dispatch} actionCreators = {spinnerActionCreators} />, document.getElementById('root'));
+                // ReactDOM.render( <Spinner 
+                //                     value = {value} 
+                //                     dispatch = {store.dispatch} 
+                //                     up = {spinnerActionCreators.up}
+                //                     down = {spinnerActionCreators.down}
+                //                     />, document.getElementById('root'));
+                ReactDOM.render( <Spinner 
+                                    value = {value} 
+                                    dispatch = {store.dispatch} 
+                                    {...spinnerActionCreators}
+                                    />, document.getElementById('root'));
             };
 
            renderApp();
