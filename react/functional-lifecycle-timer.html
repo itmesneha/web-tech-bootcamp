@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>lifecycle functionl timer</title>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type = 'text/babel'>
+
+        const TimerContainer = () => {
+            const [showTimer,setShowTimer] = React.useState(false);
+            return (
+                <div>
+                    <h1>Timer</h1>
+                    <label>Show Timer </label>
+                    <input type = "checkbox" onChange = { evt => setShowTimer(evt.target.checked) } />
+                    {showTimer && <Timer />}   
+                </div>                
+            );
+        }; 
+
+        const Timer = () => {
+            const [ currentTime, setCurrentTime ] = React.useState(new Date().toTimeString());
+            React.useEffect( () => {
+                //this function will be executed whenever the component is initialized/mounted & updated.
+                const timerId = setInterval( () => {
+                    setCurrentTime(new Date().toTimeString());
+                }, 1000);
+
+                return () => {
+                    //this function will be executed whenever the component is unmounted
+                    if(timerId)
+                        clearInterval(timerId);
+                };
+            }, [] //list the dependencies we want changed when component is updated
+            );
+            return (
+                <div>
+                    {currentTime}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<TimerContainer />, document.getElementById('root'));
+        </script>
+    </head>
+    <body>
+        <div id = 'root'>
+
+        </div>
+    </body>
+</html>
+
