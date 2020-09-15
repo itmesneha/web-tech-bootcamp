@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>functional - greeter</title>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type = 'text/babel'>
+            class Greeter extends React.Component {
+                render() {
+                    return (
+                        <div>
+                            <h1>Greeter</h1>
+                            <hr />
+                            <label>User Name: </label>
+                            <input type = 'text' id = 'txtUserName' /><br />
+                            <input type = 'button' id = '' value = 'Greet!!' />
+                            <div>[ Greet Message ] </div>
+                        </div>
+                    )
+                }
+            }
+
+            ReactDOM.render(<Greeter />, document.getElementById('root'));
+        </script>
+    </head>
+    <body>
+        <div id = 'root'>
+
+        </div>
+    </body>
+</html>
