@@ -4,6 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// import * as calc from './calc';
+// console.log(calc);
+
+// const add = calc.add;
+// const {add} = calc; 
+
+// import {add} from './calc';
+
+// importing default exports
+import calc from './calc';
+console.log(calc);
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
