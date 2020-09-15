@@ -5,22 +5,44 @@
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type = 'text/babel'>
-            class Greeter extends React.Component {
-                render() {
-                    return (
+
+            function Greeter (props) {
+                const stateValues = React.useState('default greet message');
+                const message = stateValues[0],
+                    setMessage = stateValues[1];
+                // const [message, setMessage] = React.useState('default greet message');
+                const [userName,setUserName] = React.useState('');
+                const onGreetClick = () => {
+                    setMessage(`hi, ${userName} ${props.template}`);
+                }
+                return (
                         <div>
                             <h1>Greeter</h1>
                             <hr />
                             <label>User Name: </label>
-                            <input type = 'text' id = 'txtUserName' /><br />
-                            <input type = 'button' id = '' value = 'Greet!!' />
-                            <div>[ Greet Message ] </div>
+                            <input type = 'text' id = 'txtUserName' onChange = { evt => { setUserName(evt.target.value) } } /><br />
+                            <input type = 'button' id = '' value = 'Greet!!' onClick = {onGreetClick}/>
+                            <div>{message}</div>
                         </div>
-                    )
-                }
+                    );
             }
 
-            ReactDOM.render(<Greeter />, document.getElementById('root'));
+            // class Greeter extends React.Component {
+            //     render() {
+            //         return (
+            //             <div>
+            //                 <h1>Greeter</h1>
+            //                 <hr />
+            //                 <label>User Name: </label>
+            //                 <input type = 'text' id = 'txtUserName' /><br />
+            //                 <input type = 'button' id = '' value = 'Greet!!' />
+            //                 <div>[ Greet Message ] </div>
+            //             </div>
+            //         )
+            //     }
+            // }
+
+            ReactDOM.render(<Greeter template = 'have a nice day!' />, document.getElementById('root'));
         </script>
     </head>
     <body>
