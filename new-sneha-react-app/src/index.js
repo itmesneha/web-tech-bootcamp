@@ -7,10 +7,12 @@ import store from './store';
 import Spinner from './Spinner';
 import spinnerActionCreators from './Spinner/actions';
 import {Provider} from 'react-redux';
+import BugTracker from './bugTracker';
 
 ReactDOM.render (
   <Provider store = {store}>
     <Spinner />
+    <BugTracker />
   </Provider>
   , document.getElementById('root')
 );
