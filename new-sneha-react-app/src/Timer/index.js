@@ -10,7 +10,7 @@ const TimerContainer = () => {
             {showTimer && <Timer />}   
         </div>                
     );
-}; 
+};  
 
 export default TimerContainer;
 
