@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 
 const Spinner = ({value, dispatch, up, down}) => {
     // const {value, dispatch, up, down} = props;
