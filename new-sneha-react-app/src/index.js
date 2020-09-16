@@ -11,7 +11,10 @@ import BugTracker from './bugTracker';
 
 ReactDOM.render (
   <Provider store = {store}>
+    <h1>My App</h1>
+    <hr />
     <Spinner />
+    <hr />
     <BugTracker />
   </Provider>
   , document.getElementById('root')
