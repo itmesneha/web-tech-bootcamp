@@ -6,9 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import store from './store';
 import Spinner from './Spinner';
 import spinnerActionCreators from './Spinner/actions';
+import {Provider} from 'react-redux';
 
-function renderApp() {
-  const value = store.getState();
+ReactDOM.render (
+  <Provider store = {store}>
+    <Spinner />
+  </Provider>
+  , document.getElementById('root')
+);
+
+// function renderApp() {
+//   const value = store.getState();
   // ReactDOM.render( <Spinner value = {value} dispatch = {store.dispatch} actionCreators = {spinnerActionCreators} />, document.getElementById('root'));
   // ReactDOM.render( <Spinner 
   //                     value = {value} 
@@ -16,15 +24,15 @@ function renderApp() {
   //                     up = {spinnerActionCreators.up}
   //                     down = {spinnerActionCreators.down}
   //                     />, document.getElementById('root'));
-  ReactDOM.render( <Spinner 
-                      value = {value} 
-                      dispatch = {store.dispatch} 
-                      {...spinnerActionCreators}
-                      />, document.getElementById('root'));
-};
+//   ReactDOM.render( <Spinner 
+//                       value = {value} 
+//                       dispatch = {store.dispatch} 
+//                       {...spinnerActionCreators}
+//                       />, document.getElementById('root'));
+// };
 
-renderApp();
-store.subscribe(renderApp);
+// renderApp();
+// store.subscribe(renderApp);
 
 // import * as calc from './calc';
 // console.log(calc);
@@ -48,4 +56,5 @@ store.subscribe(renderApp);
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();

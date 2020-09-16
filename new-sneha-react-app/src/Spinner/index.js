@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
+import { useSelector, useDispatch } from 'react-redux'; //for state, dispatch
+import spinnerActionCreators from './actions';
 
-const Spinner = ({value, dispatch, up, down}) => {
+const Spinner = () => {
     // const {value, dispatch, up, down} = props;
     const [delta, setDelta] = useState(0);
+    const value = useSelector( storeState => storeState );
+    const dispatch = useDispatch();
+    const {up, down} = spinnerActionCreators;
+
     return (
         <div>
             <h3>Spinner</h3>
