@@ -5,7 +5,7 @@ import spinnerActionCreators from './actions';
 const Spinner = () => {
     // const {value, dispatch, up, down} = props;
     const [delta, setDelta] = useState(0);
-    const value = useSelector( storeState => storeState );
+    const value = useSelector( storeState => storeState.spinnerState );
     const dispatch = useDispatch();
     const {up, down} = spinnerActionCreators;
 
@@ -19,9 +19,9 @@ const Spinner = () => {
                 setDelta(parseInt(evt.target.value) || 0 ) 
                 } />
             <br />
-            <input type = "button" value = "down" onClick = {() => {  dispatch(up(delta)) }}/>
+            <input type = "button" value = "down" onClick = {() => {  dispatch(down(delta)) }}/>
             <span> [ {value} ] </span>
-            <input type = 'button' value = 'up' onClick = {() => { dispatch(down(delta))} }/>
+            <input type = 'button' value = 'up' onClick = {() => { dispatch(up(delta))} }/>
         </div>
     );
 };

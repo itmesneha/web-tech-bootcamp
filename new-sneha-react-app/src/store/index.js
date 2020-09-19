@@ -1,13 +1,8 @@
-import {createStore, combineReducers} from 'redux'; //combined Reducers is an API
-
-import spinnerReducer from '../reducers/spinnerReducer';
-import bugsReducer from '../reducers/bugsReducer';
-
-const rootReducer = combineReducers({
- spinnerState : spinnerReducer,
- bugState : bugsReducer
-});
+import {createStore} from 'redux'; 
+import rootReducer from '../reducers';
 
 const store = createStore(rootReducer);
+
+// window['store'] = store;
 
 export default store;
