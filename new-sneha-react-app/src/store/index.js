@@ -1,7 +1,24 @@
-import {createStore} from 'redux'; 
+import {createStore, applyMiddleware} from 'redux'; 
 import rootReducer from '../reducers';
 
-const store = createStore(rootReducer);
+function loggerMiddleware(store) {
+    return function(next) {
+        return function(action) {
+            console.log(action.type);
+            console.group('Before...');
+            console.log(store.getState());
+            console.groupEnd();
+            console.log(action);
+            next(action);
+            console.group('After...');
+            console.log(store.getState());
+            console.groupEnd();
+            console.groupEnd();
+        }
+    }
+}
+
+const store = createStore(rootReducer, applyMiddleware(loggerMiddleware) );
 
 // window['store'] = store;
 

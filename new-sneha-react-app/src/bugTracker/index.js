@@ -1,10 +1,17 @@
-import React, { Fragment } from 'react';
-import {useSelector} from 'react-redux';
+import React, { Fragment, useEffect } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import './index.css'
+import bugActionCreators from './actions';
 
 const BugTracker = () => {
     const bugs =   useSelector( storeState => storeState.bugsState);  //useSelector is the way to access the data from the store in the component
     // console.table(bugs);
+    const { load } = bugActionCreators;
+    const dispatch = useDispatch();
+    useEffect(() => {               //to load on demand. to use effect in lifecycle component.
+        dispatch(load()); 
+        // load(dispatch);     //not supposed to do this, only supposed to call dispatch with load
+    }, [dispatch, load]);
     const bugItems = bugs.map(bug => (
             <li key = {bug.id}>
                 <span className = {'bugName' + (bug.isClosed ? 'closed' : '')} >
