@@ -47,14 +47,20 @@ function getRemoteBugs() {
 // };
 
 //asynchronous function (handled by asyncmiddlewares/ redux thunk)
-function load() {
-    return function(dispatch) {
-        return getRemoteBugs().then((bugs) => {
-            const action = {type : "LOAD_BUGS", payload : bugs};
-            dispatch(action); 
-        });
-    }
-};
+// function load() {
+//     return function(dispatch) {
+//         return getRemoteBugs().then((bugs) => {
+//             const action = {type : "LOAD_BUGS", payload : bugs};
+//             dispatch(action); 
+//         });
+//     }
+// };
+
+const load = () => async (dispatch) => {
+    const bugs = await getRemoteBugs();
+    const action = { type: 'LOAD_BUGS', payload : bugs};
+    dispatch(action);
+};  
 
 //asynchronous action handled by promise middleware
 // function load() {
